@@ -3,16 +3,16 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import "./styles.css";
 
-export default function App() {
+export default function ValentineCard() {
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     if (opened) {
-      gsap.to(".hearts", {
+      gsap.to(".heart", {
         y: -500,
         opacity: 0,
-        duration: 4,
-        stagger: 0.5,
+        duration: 6,
+        stagger: 0.8,
         repeat: -1,
         ease: "easeInOut"
       });
@@ -20,27 +20,35 @@ export default function App() {
   }, [opened]);
 
   return (
-    <div className="container">
-      <motion.div
-        className="envelope"
-        initial={{ y: 0 }}
-        animate={opened ? { y: -100, opacity: 0 } : {}}
-        onClick={() => setOpened(true)}
-      >
-        Open Me
-      </motion.div>
-      {opened && (
+    <div className="valentine-container">
+      {!opened && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="message"
+          className="envelope"
+          initial={{ y: 0 }}
+          animate={{ y: 10 }}
+          transition={{ yoyo: Infinity, duration: 1 }}
+          onClick={() => setOpened(true)}
         >
-          <h1>Happy Valentine's Day, Violet! ❤️</h1>
+          <img src="/envelope.png" alt="Envelope" className="envelope-img" />
         </motion.div>
       )}
+
       {opened && (
-        <div className="floating-hearts">
+        <motion.div
+          className="love-message"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+        >
+          <h1 className="romantic-text">С любовью, в честь 8 марта, Россия! ❤️</h1>
+          <p className="subtext">
+            Ты самый светлый и прекрасный человек в моей жизни. Пусть этот день принесёт тебе радость и счастье!
+          </p>
+        </motion.div>
+      )}
+
+      {opened && (
+        <div className="hearts-container">
           {[...Array(10)].map((_, i) => (
             <motion.div
               key={i}
