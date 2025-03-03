@@ -1,37 +1,66 @@
+/* General Page Styling */
 body {
-    background-color: #ffe6e6;
+    background-color: #ffebeb;
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Dancing Script', cursive, Arial, sans-serif;
     margin: 0;
+    overflow: hidden;
 }
 
-.container {
+/* Container for the entire experience */
+.valentine-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    position: relative;
 }
 
+/* Envelope Styling */
 .envelope {
     width: 200px;
     height: 150px;
-    background-color: red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
     cursor: pointer;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
 }
 
-.message {
-    font-size: 24px;
-    color: red;
+.envelope-img {
+    width: 100%;
+    height: auto;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.envelope:hover .envelope-img {
+    transform: scale(1.1);
+}
+
+/* Love Message Styling */
+.love-message {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
     margin-top: 20px;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
+.romantic-text {
+    font-size: 28px;
+    color: #c70039;
+    font-weight: bold;
+}
+
+.subtext {
+    font-size: 18px;
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Floating Hearts Styling */
 .hearts-container {
     position: absolute;
     top: 0;
@@ -39,6 +68,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .heart {
@@ -46,9 +76,29 @@ body {
     font-size: 24px;
     color: red;
     opacity: 0;
+    animation: floatUp 6s infinite ease-in-out;
 }
 
+/* Floating Hearts Animation */
 @keyframes floatUp {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-500px); opacity: 0; }
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-500px);
+        opacity: 0;
+    }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
