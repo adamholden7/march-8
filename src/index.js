@@ -31,5 +31,5 @@ function App() {
     );
 }
 
-// Render to #root
+// Render the React App into #root
 ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
